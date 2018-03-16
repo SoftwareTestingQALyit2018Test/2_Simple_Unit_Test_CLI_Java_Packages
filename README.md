@@ -32,14 +32,15 @@ $ tree
 ```
 
 The structure of the project directory tree mirrors the Gradle, Ant and Maven
-defaults. Note the two separate directories, one for the source code of the SUT and
-one for the JUnit test code.
+defaults for Java projects. Note the two separate directories, one for the
+source code of the SUT and one for the JUnit test code.
 
 The packages that are to be created are `ie.lyit.comp.geometry.shape.rectangle`
-and `ie.lyit.comp.geometry.shape.circle`. I am following the guidance in the
-Java Tutorial Trail on Packages and I will firstly create a directory structure
-that mirrors the package namespace making sure that I am in the root of the
-directory tree for the project.
+and `ie.lyit.comp.geometry.shape.circle`. 
+
+I am following the guidance in the Java Tutorial Trail on Packages and I will
+firstly create a directory structure that mirrors the package namespace making
+sure that I am in the root of the directory tree for the project.
 
 ```sh
 $ mkdir -p src/main/java/ie/lyit/comp/geometry/shape
@@ -98,12 +99,14 @@ public class rectangle{
 }
 ```
 
-And we note that the `getPerimeter()` method has no functionality.
+And we note that the `getPerimeter()` method is always going to return `0`
+rather than the calculated perimeter from the constructor arguments of length
+and width.
 
-And then in the spirit of test driven development create the test before the
-full implementation of the SUT.
+And then in the spirit of test driven development, we create the unit test before the
+correct implementation of the SUT.
 
-```sh
+```console
 $ cd $PROJECT_ROOT/src/test/java/ie/lyit/comp/geometry/shape/
 $ vim rectangleTest.java
 ...
