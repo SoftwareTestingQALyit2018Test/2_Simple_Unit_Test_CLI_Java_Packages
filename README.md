@@ -5,21 +5,21 @@
 ## Initial steps
 
 Firstly we make the project directory:
-```sh
+```console
 $ mkdir example2
 $ cd example2
 ```
 
 And then create a `README.md` file for the project.
 
-```sh
+```console
 $ vim README.md
 ...
 $
 ```
 
 Next we create a directory structure local to the project and then verify it:
-```sh
+```console
 $ mkdir src src/main src/main/java src/test/ src/test/java
 $ tree 
 .
@@ -42,7 +42,7 @@ I am following the guidance in the Java Tutorial Trail on Packages and I will
 firstly create a directory structure that mirrors the package namespace making
 sure that I am in the root of the directory tree for the project.
 
-```sh
+```console
 $ mkdir -p src/main/java/ie/lyit/comp/geometry/shape
 $ mkdir -p src/test/java/ie/lyit/comp/geometry/shape
 $ tree
@@ -70,7 +70,7 @@ $
 
 We create an incomplete implementation of the SUT:
 
-```sh
+```console
 $ cd main/java/ie/lyit/comp/geometry/shape/
 $ vim rectangle.java
 ...
@@ -102,6 +102,8 @@ public class rectangle{
 And we note that the `getPerimeter()` method is always going to return `0`
 rather than the calculated perimeter from the constructor arguments of length
 and width.
+
+## The JUnit Test 
 
 And then in the spirit of test driven development, we create the unit test before the
 correct implementation of the SUT.
@@ -137,18 +139,21 @@ public class rectangleTest {
 }
 ```
 And then we compile the JUnit test class:
-```sh
+```console
 $ javac -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ rectangleTest.java
 ```
-Noting in particular the `-cp` or `-classpath' flag takes three arguments that
+Noting in particular the `-cp` or `-classpath' flag for `javac` takes three arguments that
 specify where the compiler will find the classes that it needs:
 1. The current directory `.` (the default for the `javac` compiler.
 2. The location of the JUnit jar file i.e. `/usr/share/java/junit4.jar` (this is
    a linux system and will be different for a Windows or Apple system).
 3. The location of the class that will be tested e.g. `/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/` noting that the remaining part of the path to the rectangle class is resolved by the compiler using the package declarations and package imports.
 
+
+## The Test Fails...
+
 And then we invoke the test:
-```sh
+```console
 $ java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ org.junit.runner.JUnitCore  rectangleTest
 
 JUnit version 4.12
@@ -168,6 +173,8 @@ Tests run: 1,  Failures: 1
 $
 ```
 
+## And the Test Passes...
+
 So now we correct the incomplete method by editing the source code for the SUT
 and implementing the `getPerimeter` method correctly:
 
@@ -179,7 +186,7 @@ and implementing the `getPerimeter` method correctly:
 ```
 And then recompile the rectangle class and rerun the JUnit test:
 
-```sh
+```console
 $ java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ org.junit.runner.JUnitCore  rectangleTest
 JUnit version 4.12
 .
@@ -189,5 +196,10 @@ OK (1 test)
 $
 ```
 
+## Comments
 
-
+1. We can see the attraction of wizards and builders in IDEs - we won't need to
+   keep track of project directory trees, project root directories, and various
+   paths to classes, jarfiles etc.
+2. But we can see exactly what is going on under the bonnet.
+3. We can see the relationship between the SUT and the tests that exercise it.
