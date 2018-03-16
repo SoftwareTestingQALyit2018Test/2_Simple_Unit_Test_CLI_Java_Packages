@@ -1,14 +1,16 @@
-## JUnit Example with Package
+# JUnit Example with Package
 
-Initial steps;
 
-Make the project directory:
+
+## Initial steps
+
+Firstly we make the project directory:
 ```sh
 $ mkdir example2
 $ cd example2
 ```
 
-Create a `README.md` file for the project.
+And then create a `README.md` file for the project.
 
 ```sh
 $ vim README.md
@@ -16,7 +18,7 @@ $ vim README.md
 $
 ```
 
-Create a directory structure local to the project and then verify it:
+Next we create a directory structure local to the project and then verify it:
 ```sh
 $ mkdir src src/main src/main/java src/test/ src/test/java
 $ tree 
@@ -30,13 +32,14 @@ $ tree
 ```
 
 The structure of the project directory tree mirrors the Gradle, Ant and Maven
-defaults. Note the two separate directories for the source code of the SUT and
-the JUnit test code.
+defaults. Note the two separate directories, one for the source code of the SUT and
+one for the JUnit test code.
 
 The packages that are to be created are `ie.lyit.comp.geometry.shape.rectangle`
 and `ie.lyit.comp.geometry.shape.circle`. I am following the guidance in the
 Java Tutorial Trail on Packages and I will firstly create a directory structure
-that mirrors the package namespace.
+that mirrors the package namespace making sure that I am in the root of the
+directory tree for the project.
 
 ```sh
 $ mkdir -p src/main/java/ie/lyit/comp/geometry/shape
@@ -62,7 +65,10 @@ $ tree
 $ 
 ```
 
+## The System Under Test
+
 We create an incomplete implementation of the SUT:
+
 ```sh
 $ cd main/java/ie/lyit/comp/geometry/shape/
 $ vim rectangle.java
@@ -73,7 +79,6 @@ $ javac rectangle.java
 Where the rectangle class is implemented thus:
 ```java
 package ie.lyit.comp.geometry.shape;
-
 
 public class rectangle{
     private int length = 0;
@@ -92,19 +97,19 @@ public class rectangle{
 
 }
 ```
-And we note that the `getPerimeter` method has no functionality.
+
+And we note that the `getPerimeter()` method has no functionality.
 
 And then in the spirit of test driven development create the test before the
 full implementation of the SUT.
 
 ```sh
-$ cd $PROJECT_ROOT
-$ cd src/test/java/ie/lyit/comp/geometry/shape/
+$ cd $PROJECT_ROOT/src/test/java/ie/lyit/comp/geometry/shape/
 $ vim rectangleTest.java
 ...
 $
 ```
-And then we create the JUnit test for the `getPerimeter` method of the SUT:
+And then we create the JUnit test for the `getPerimeter()` method of the SUT:
 
 ```java
 import org.junit.*;
@@ -128,7 +133,7 @@ public class rectangleTest {
 
 }
 ```
-And then compile the JUnit test class:
+And then we compile the JUnit test class:
 ```sh
 $ javac -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ rectangleTest.java
 ```
@@ -160,6 +165,27 @@ Tests run: 1,  Failures: 1
 $
 ```
 
-So now we correct the incomplete method:
+So now we correct the incomplete method by editing the source code for the SUT
+and implementing the `getPerimeter` method correctly:
+
+```java
+    public int getPerimeter(){
+        perimeter = (2 * length) + (2 * width);
+        return perimeter;
+    }
+```
+
+And then recompile the rectangle class and rerun the JUnit test:
+
+```sh
+$ java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ org.junit.runner.JUnitCore  rectangleTest
+JUnit version 4.12
+.
+Time: 0.003
+
+OK (1 test)
+$
+```
+
 
 

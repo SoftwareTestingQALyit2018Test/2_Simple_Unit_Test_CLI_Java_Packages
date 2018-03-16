@@ -13,6 +13,7 @@ public class rectangle{
     }
 
     public int getPerimeter(){
+        perimeter = (2 * length) + (2 * width);
         return perimeter;
     }
 
