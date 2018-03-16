@@ -177,8 +177,6 @@ and implementing the `getPerimeter` method correctly:
         return perimeter;
     }
 ```
-Below the perma-link
-[https://github.com/SoftwareTestingQALyit2018Test/2_Simple_Unit_Test_CLI_Java_Packages/blob/a6ef980e4ec404b68956c6f938e9407ac2a34a36/src/main/java/ie/lyit/comp/geometry/shape/rectangle.java#L15-L18]
 And then recompile the rectangle class and rerun the JUnit test:
 
 ```sh
