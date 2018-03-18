@@ -10,15 +10,24 @@ $ mkdir example2
 $ cd example2
 ```
 
-And then create a `README.md` file for the project.
+In these example projects we will work off a central notion that all source and
+resources are contained within a single project folder which I will denote as
+`$PROJECT_ROOT`. The `$PROJECT_ROOT` notation is an example of a shell variable
+which in Linux shells can contain a directory path.
+
+
+So we make the `$PROJECT_ROOT` directory our current working directory and then
+create a `README.md` file for the project.
 
 ```console
 $ vim README.md
 ...
 $
 ```
+You can use the text editor of your choice.
 
 Next we create a directory structure local to the project and then verify it:
+
 ```console
 $ mkdir src src/main src/main/java src/test/ src/test/java
 $ tree 
@@ -32,7 +41,7 @@ $ tree
 ```
 
 The structure of the project directory tree mirrors the Gradle, Ant and Maven
-defaults for Java projects. Note the two separate directories, one for the
+defaults for Java projects. Note the two separate directory trees, one for the
 source code of the SUT and one for the JUnit test code.
 
 The packages that are to be created are `ie.lyit.comp.geometry.shape.rectangle`
@@ -77,7 +86,8 @@ $ vim rectangle.java
 $ javac rectangle.java
 ```
 
-Where the rectangle class is implemented thus:
+Where the `rectangle` class is implemented thus:
+
 ```java
 package ie.lyit.comp.geometry.shape;
 
@@ -138,10 +148,13 @@ public class rectangleTest {
 
 }
 ```
+
 And then we compile the JUnit test class:
+
 ```console
 $ javac -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ rectangleTest.java
 ```
+
 Noting in particular the `-cp` or `-classpath' flag for `javac` takes three arguments that
 specify where the compiler will find the classes that it needs:
 1. The current directory `.` (the default for the `javac` compiler.
@@ -196,10 +209,21 @@ OK (1 test)
 $
 ```
 
+We can also invoke the Junit test for the SUT from the `$PROJECT_ROOT`
+directory:
+
+```console
+$ java -classpath .:/usr/share/java/junit4.jar:src/main/java/:src/test/java/ie/lyit/comp/geometry/shape/ org.junit.runner.JUnitCore rectangleTest 
+JUnit version 4.12
+.
+Time: 0.003
+
+OK (1 test)
+$ 
 ## Comments
 
 1. We can see the attraction of wizards and builders in IDEs - we won't need to
    keep track of project directory trees, project root directories, and various
    paths to classes, jarfiles etc.
 2. But we can see exactly what is going on under the bonnet.
-3. We can see the relationship between the SUT and the tests that exercise it.
+3. And we can see the relationship between the SUT and the tests that exercise it.
