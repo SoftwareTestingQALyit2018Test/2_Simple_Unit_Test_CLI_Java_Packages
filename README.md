@@ -1,5 +1,7 @@
 # JUnit Example with Package
 
+This is a test:
+<script src="https://gist.github.com/martinRobinson/f5f4db163ec843829f8b31bc8055b2d9.js"></script>
 
 
 ## Initial steps
