@@ -5,7 +5,7 @@
 ## Initial steps
 
 Firstly we make the project directory:
-```console
+```console{.line-numbers}
 $ mkdir example2
 $ cd example2
 ```
