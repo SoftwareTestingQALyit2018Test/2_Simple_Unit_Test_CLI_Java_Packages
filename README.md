@@ -86,7 +86,7 @@ $ javac rectangle.java
 
 Where the `rectangle` class is implemented thus:
 
-```java {.line-numbers}
+```java
 package ie.lyit.comp.geometry.shape;
 
 public class rectangle{
