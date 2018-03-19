@@ -3,7 +3,7 @@
 ## Initial steps
 
 Firstly we make the project directory:
-```console {.line-numbers}
+```console 
 $ mkdir example2
 $ cd example2
 ```
