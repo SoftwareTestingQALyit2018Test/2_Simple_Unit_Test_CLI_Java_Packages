@@ -8,16 +8,6 @@ $ mkdir example2
 $ cd example2
 ```
 
-
-
-## Test page
-
-This is a testpage.
-
-<script
-src="https://gist.github.com/martinRobinson/eae87bab4c3ab72a174b4b56f928168c
-.js"></script>
-
 In these example projects we will work off a central notion that all source and
 resources are contained within a single project folder which I will denote as
 `$PROJECT_ROOT`. The `$PROJECT_ROOT` notation is an example of a shell variable
