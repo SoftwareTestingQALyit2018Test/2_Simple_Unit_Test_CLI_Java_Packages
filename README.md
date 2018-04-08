@@ -9,11 +9,18 @@
 ## Initial steps
 
 Firstly we make the project directory:
+<<<<<<< HEAD
 
 <pre class="command-line" data-user="martin" data-host="localhost" data-output=""><code class="language-bash">
 mkdir example2
 cd example2
 </code> </pre>
+=======
+```console
+$ mkdir example2
+$ cd example2
+```
+>>>>>>> 8f13a19ab555a97689e51261eba0548b31c60135
 
 In these example projects we will work off a central notion that all source and
 resources are contained within a single project folder which I will denote as
