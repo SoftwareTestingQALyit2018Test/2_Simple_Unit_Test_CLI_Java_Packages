@@ -1,38 +1,39 @@
-<link rel="stylesheet" href="resources/pandoc.css">
-<link rel="stylesheet" href="resources/prism.css">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<link rel="stylesheet" href="resources/pandoc.css"> <link rel="stylesheet" href="resources/prism.css">
 <script src="resources/prism.js"></script>
-
 <style>body { padding: 150px } pre { padding: 0 }</style>
-
-# JUnit Example with Source Organised Using Packages
-
-## Initial steps
-
-Firstly we make the project directory:
-
+<h1 id="junit-example-with-source-organised-using-packages">JUnit Example with Source Organised Using Packages</h1>
+<h2 id="initial-steps">Initial steps</h2>
+<p>Firstly we make the project directory:</p>
 <pre class="command-line" data-user="martin" data-host="localhost" data-output=""><code class="language-bash">
 mkdir example2
 cd example2
 </code> </pre>
-
-In these example projects we will work off a central notion that all source and
-resources are contained within a single project folder which I will denote as
-`$PROJECT_ROOT`. The `$PROJECT_ROOT` notation is an example of a shell variable
-which in Linux shells can contain a directory path.
-
-
-So we make the `$PROJECT_ROOT` directory our current working directory and then
-create a `README.md` file for the project.
-
+<p>In these example projects we will work off a central notion that all source and resources are contained within a single project folder which I will denote as <code>$PROJECT_ROOT</code>. The <code>$PROJECT_ROOT</code> notation is an example of a shell variable which in Linux shells can contain a directory path.</p>
+<p>So we make the <code>$PROJECT_ROOT</code> directory our current working directory and then create a <code>README.md</code> file for the project.</p>
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
 vim README.md
 (out)...
 </code> </pre>
-
-You can use the text editor of your choice.
-
-Next we create a directory structure local to the project and then verify it:
-
+<p>You can use the text editor of your choice.</p>
+<p>Next we create a directory structure local to the project and then verify it:</p>
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
 $ mkdir src src/main src/main/java src/test/ src/test/java
 $ tree
@@ -44,20 +45,9 @@ $ tree
 (out)    └── test
 (out)        └── java
 </code> </pre>
-
-
-The structure of the project directory tree mirrors the Gradle, Ant and Maven
-defaults for Java projects. Note the two separate directory trees, one for the
-source code of the SUT and one for the JUnit test code.
-
-The packages that are to be created are `ie.lyit.comp.geometry.shape.rectangle`
-and `ie.lyit.comp.geometry.shape.circle`.
-
-I am following the guidance in the Java Tutorial Trail on Packages and I will
-firstly create a directory structure that mirrors the package namespace making
-sure that I am in the root of the directory tree for the project.
-
-
+<p>The structure of the project directory tree mirrors the Gradle, Ant and Maven defaults for Java projects. Note the two separate directory trees, one for the source code of the SUT and one for the JUnit test code.</p>
+<p>The packages that are to be created are <code>ie.lyit.comp.geometry.shape.rectangle</code> and <code>ie.lyit.comp.geometry.shape.circle</code>.</p>
+<p>I am following the guidance in the Java Tutorial Trail on Packages and I will firstly create a directory structure that mirrors the package namespace making sure that I am in the root of the directory tree for the project.</p>
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
 $ mkdir -p src/main/java/ie/lyit/comp/geometry/shape
 $ mkdir -p src/test/java/ie/lyit/comp/geometry/shape
@@ -80,21 +70,15 @@ $ tree
 (out)                        └── geometry
 (out)                            └── shape
 </code> </pre>
-
-
-## The System Under Test
-
-We create an incomplete implementation of the SUT:
-
+<h2 id="the-system-under-test">The System Under Test</h2>
+<p>We create an incomplete implementation of the SUT:</p>
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
 cd main/java/ie/lyit/comp/geometry/shape/
 vim rectangle.java
 (out)...
 javac rectangle.java
 </code> </pre>
-
-Where the `rectangle` class is implemented thus:
-
+<p>Where the <code>rectangle</code> class is implemented thus:</p>
 <pre class="line-numbers"><code class="language-java" >
 package ie.lyit.comp.geometry.shape;
 
@@ -114,25 +98,15 @@ public class rectangle{
     }
 }
 </code> </pre>
-
-
-And we note that the `getPerimeter()` method is always going to return `0`
-rather than the calculated perimeter from the constructor arguments of length
-and width.
-
-## The JUnit Test
-
-And then in the spirit of test driven development, we create the unit test before the
-correct implementation of the SUT.
-
+<p>And we note that the <code>getPerimeter()</code> method is always going to return <code>0</code> rather than the calculated perimeter from the constructor arguments of length and width.</p>
+<h2 id="the-junit-test">The JUnit Test</h2>
+<p>And then in the spirit of test driven development, we create the unit test before the correct implementation of the SUT.</p>
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
 cd $PROJECT_ROOT/src/test/java/ie/lyit/comp/geometry/shape/
 vim rectangleTest.java
 (out)...
 </code> </pre>
-
-And then we create the JUnit test for the `getPerimeter()` method of the SUT:
-
+<p>And then we create the JUnit test for the <code>getPerimeter()</code> method of the SUT:</p>
 <pre class="line-numbers"><code class="language-java" >
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -154,24 +128,17 @@ public class rectangleTest {
     }
 }
 </code> </pre>
-
-And then we compile the JUnit test class:
-
+<p>And then we compile the JUnit test class:</p>
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
 $ javac -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ rectangleTest.java
 </code> </pre>
-
-Noting in particular the `-cp` or `-classpath' flag for `javac` takes three arguments that
-specify where the compiler will find the classes that it needs:
-
-1. The current directory `.` (the default for the `javac` compiler).
-2. The location of the JUnit jar file i.e. `/usr/share/java/junit4.jar` (this is
-   a linux system and will be different for a Windows or Apple system).
-3. The location of the class that will be tested e.g. `/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/` noting that the remaining part of the path to the rectangle class is resolved by the compiler using the package declarations and package imports.
-
-
-## The Test Fails...
-
+<p>Noting in particular the <code>-cp</code> or <code>-classpath' flag for</code>javac` takes three arguments that specify where the compiler will find the classes that it needs:</p>
+<ol type="1">
+<li>The current directory <code>.</code> (the default for the <code>javac</code> compiler).</li>
+<li>The location of the JUnit jar file i.e. <code>/usr/share/java/junit4.jar</code> (this is a linux system and will be different for a Windows or Apple system).</li>
+<li>The location of the class that will be tested e.g. <code>/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/</code> noting that the remaining part of the path to the rectangle class is resolved by the compiler using the package declarations and package imports.</li>
+</ol>
+<h2 id="the-test-fails">The Test Fails…</h2>
 And then we invoke the test:
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
 $ java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ org.junit.runner.JUnitCore  rectangleTest
@@ -182,30 +149,24 @@ $ java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skill
 (out)There was 1 failure:
 (out)1) rectangleCorrectPerimeterTest(rectangleTest)
 (out)java.lang.AssertionError: expected:<18> but was:<0>
-(out)	at org.junit.Assert.fail(Assert.java:88)
-(out)	at org.junit.Assert.failNotEquals(Assert.java:834)
-(out)	at org.junit.Assert.assertEquals(Assert.java:645)
-(out)	at org.junit.Assert.assertEquals(Assert.java:631)
+(out)   at org.junit.Assert.fail(Assert.java:88)
+(out)   at org.junit.Assert.failNotEquals(Assert.java:834)
+(out)   at org.junit.Assert.assertEquals(Assert.java:645)
+(out)   at org.junit.Assert.assertEquals(Assert.java:631)
 (out)...
 (out)
 (out)FAILURES!!!
 (out)Tests run: 1,  Failures: 1
 </code> </pre>
-
-## And the Test Passes...
-
-So now we correct the incomplete method by editing the source code for the SUT
-and implementing the `getPerimeter` method correctly:
-
+<h2 id="and-the-test-passes">And the Test Passes…</h2>
+<p>So now we correct the incomplete method by editing the source code for the SUT and implementing the <code>getPerimeter</code> method correctly:</p>
 <pre class="line-numbers"><code class="language-java" >
     public int getPerimeter(){
         perimeter = (2 * length) + (2 * width);
         return perimeter;
     }
 </code> </pre>
-
-And then recompile the rectangle class and rerun the JUnit test:
-
+<p>And then recompile the rectangle class and rerun the JUnit test:</p>
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
 $ java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ org.junit.runner.JUnitCore  rectangleTest
 (out)JUnit version 4.12
@@ -214,10 +175,7 @@ $ java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skill
 (out)
 (out)OK (1 test)
 </code> </pre>
-
-We can also invoke the Junit test for the SUT from the `$PROJECT_ROOT`
-directory:
-
+<p>We can also invoke the Junit test for the SUT from the <code>$PROJECT_ROOT</code> directory:</p>
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
 $ java -classpath .:/usr/share/java/junit4.jar:src/main/java/:src/test/java/ie/lyit/comp/geometry/shape/ org.junit.runner.JUnitCore rectangleTest
 (out)JUnit version 4.12
@@ -226,16 +184,14 @@ $ java -classpath .:/usr/share/java/junit4.jar:src/main/java/:src/test/java/ie/l
 (out)
 (out)OK (1 test)
 </code> </pre>
-
-
-## Comments
-
-1. We can see the attraction of wizards and builders in IDEs - we won't need to
-   keep track of project directory trees, project root directories, and various
-   paths to classes, jarfiles etc.
-2. But we can see exactly what is going on under the bonnet.
-3. And we can see the relationship between the SUT and the tests that exercise it.
-
+<h2 id="comments">Comments</h2>
+<ol type="1">
+<li>We can see the attraction of wizards and builders in IDEs - we won’t need to keep track of project directory trees, project root directories, and various paths to classes, jarfiles etc.</li>
+<li>But we can see exactly what is going on under the bonnet.</li>
+<li>And we can see the relationship between the SUT and the tests that exercise it.</li>
+</ol>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

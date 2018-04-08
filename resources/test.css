@@ -1,0 +1,42 @@
+body {
+    background-color: linen;
+    width: 72%;
+    font-size: 100%;
+    font-family: Impact, Charcoal, sans-serif;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-right: 14%;
+    margin-left: 14%;
+}
+
+h1 {
+    font-size: 1.75em;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+p {
+    font-size: 1em;
+}
+
+em {
+    font-size: 1em;
+    font-weight: bold; 
+    border-color: gray;
+    border-width: 1px;
+    border-radius: 2px;
+}
+
+div.sourceCode{ 
+    border-color: gray;
+    border-width: 3px;
+    border-radius: 5px;
+    padding: 10px;
+    width : 72%;
+    font-size: 1.2em;
+    border-style: solid;
+    font: "Inconsolata";
+    background-color: LemonChiffon;
+}
