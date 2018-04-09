@@ -35,8 +35,8 @@ vim README.md
 <p>You can use the text editor of your choice.</p>
 <p>Next we create a directory structure local to the project and then verify it:</p>
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
-$ mkdir src src/main src/main/java src/test/ src/test/java
-$ tree
+mkdir src src/main src/main/java src/test/ src/test/java
+tree
 (out).
 (out)├── README.md
 (out)└── src
@@ -49,9 +49,9 @@ $ tree
 <p>The packages that are to be created are <code>ie.lyit.comp.geometry.shape.rectangle</code> and <code>ie.lyit.comp.geometry.shape.circle</code>.</p>
 <p>I am following the guidance in the Java Tutorial Trail on Packages and I will firstly create a directory structure that mirrors the package namespace making sure that I am in the root of the directory tree for the project.</p>
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
-$ mkdir -p src/main/java/ie/lyit/comp/geometry/shape
-$ mkdir -p src/test/java/ie/lyit/comp/geometry/shape
-$ tree
+mkdir -p src/main/java/ie/lyit/comp/geometry/shape
+mkdir -p src/test/java/ie/lyit/comp/geometry/shape
+tree
 (out).
 (out)├── README.md
 (out)└── src
@@ -86,7 +86,7 @@ public class rectangle{
     private int length = 0;
     private int width = 0;
     private int area = 0;
-    private int perimeter;
+    private int perimeter = 0;
 
     public rectangle(int length, int width){
         this.length = length;
@@ -130,7 +130,7 @@ public class rectangleTest {
 </code> </pre>
 <p>And then we compile the JUnit test class:</p>
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
-$ javac -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ rectangleTest.java
+javac -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ rectangleTest.java
 </code> </pre>
 <p>Noting in particular the <code>-cp</code> or <code>-classpath' flag for</code>javac` takes three arguments that specify where the compiler will find the classes that it needs:</p>
 <ol type="1">
@@ -141,7 +141,7 @@ $ javac -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skil
 <h2 id="the-test-fails">The Test Fails…</h2>
 And then we invoke the test:
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
-$ java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ org.junit.runner.JUnitCore  rectangleTest
+java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ org.junit.runner.JUnitCore  rectangleTest
 (out)
 (out)JUnit version 4.12
 (out).E
@@ -168,7 +168,7 @@ $ java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skill
 </code> </pre>
 <p>And then recompile the rectangle class and rerun the JUnit test:</p>
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
-$ java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ org.junit.runner.JUnitCore  rectangleTest
+java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ org.junit.runner.JUnitCore  rectangleTest
 (out)JUnit version 4.12
 (out).
 (out)Time: 0.003
@@ -177,7 +177,7 @@ $ java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skill
 </code> </pre>
 <p>We can also invoke the Junit test for the SUT from the <code>$PROJECT_ROOT</code> directory:</p>
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
-$ java -classpath .:/usr/share/java/junit4.jar:src/main/java/:src/test/java/ie/lyit/comp/geometry/shape/ org.junit.runner.JUnitCore rectangleTest
+java -classpath .:/usr/share/java/junit4.jar:src/main/java/:src/test/java/ie/lyit/comp/geometry/shape/ org.junit.runner.JUnitCore rectangleTest
 (out)JUnit version 4.12
 (out).
 (out)Time: 0.003
@@ -186,8 +186,8 @@ $ java -classpath .:/usr/share/java/junit4.jar:src/main/java/:src/test/java/ie/l
 </code> </pre>
 <h2 id="comments">Comments</h2>
 <ol type="1">
-<li>We can see the attraction of wizards and builders in IDEs - we won’t need to keep track of project directory trees, project root directories, and various paths to classes, jarfiles etc.</li>
-<li>But we can see exactly what is going on under the bonnet.</li>
+<li>We can see the obvious attraction of wizards and builders in IDEs - we won’t need to keep track of project directory trees, project root directories, and various paths to classes, jarfiles etc.</li>
+<li>But we can see exactly what is going on under the bonnet with these examples.</li>
 <li>And we can see the relationship between the SUT and the tests that exercise it.</li>
 </ol>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
