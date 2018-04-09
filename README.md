@@ -35,8 +35,8 @@ You can use the text editor of your choice.
 Next we create a directory structure local to the project and then verify it:
 
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
-$ mkdir src src/main src/main/java src/test/ src/test/java
-$ tree
+mkdir src src/main src/main/java src/test/ src/test/java
+tree
 (out).
 (out)├── README.md
 (out)└── src
@@ -60,9 +60,9 @@ sure that I am in the root of the directory tree for the project.
 
 
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
-$ mkdir -p src/main/java/ie/lyit/comp/geometry/shape
-$ mkdir -p src/test/java/ie/lyit/comp/geometry/shape
-$ tree
+mkdir -p src/main/java/ie/lyit/comp/geometry/shape
+mkdir -p src/test/java/ie/lyit/comp/geometry/shape
+tree
 (out).
 (out)├── README.md
 (out)└── src
@@ -103,7 +103,7 @@ public class rectangle{
     private int length = 0;
     private int width = 0;
     private int area = 0;
-    private int perimeter;
+    private int perimeter = 0;
 
     public rectangle(int length, int width){
         this.length = length;
@@ -159,7 +159,7 @@ public class rectangleTest {
 And then we compile the JUnit test class:
 
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
-$ javac -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ rectangleTest.java
+javac -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ rectangleTest.java
 </code> </pre>
 
 Noting in particular the `-cp` or `-classpath' flag for `javac` takes three arguments that
@@ -175,7 +175,7 @@ specify where the compiler will find the classes that it needs:
 
 And then we invoke the test:
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
-$ java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ org.junit.runner.JUnitCore  rectangleTest
+java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ org.junit.runner.JUnitCore  rectangleTest
 (out)
 (out)JUnit version 4.12
 (out).E
@@ -208,7 +208,7 @@ and implementing the `getPerimeter` method correctly:
 And then recompile the rectangle class and rerun the JUnit test:
 
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
-$ java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ org.junit.runner.JUnitCore  rectangleTest
+java -cp .:/usr/share/java/junit4.jar:/home/martin/Documents/academic/IT_Skills_4_Agile_QA_Testing/Examples/1_Simple_Examples/2_Simple_Unit_Test_CLI_Java_Packages/src/main/java/ org.junit.runner.JUnitCore  rectangleTest
 (out)JUnit version 4.12
 (out).
 (out)Time: 0.003
@@ -220,7 +220,7 @@ We can also invoke the Junit test for the SUT from the `$PROJECT_ROOT`
 directory:
 
 <pre class="command-line" data-user="martin" data-host="localhost" data-filter-output="(out)"><code class="language-bash">
-$ java -classpath .:/usr/share/java/junit4.jar:src/main/java/:src/test/java/ie/lyit/comp/geometry/shape/ org.junit.runner.JUnitCore rectangleTest
+java -classpath .:/usr/share/java/junit4.jar:src/main/java/:src/test/java/ie/lyit/comp/geometry/shape/ org.junit.runner.JUnitCore rectangleTest
 (out)JUnit version 4.12
 (out).
 (out)Time: 0.003
@@ -231,10 +231,10 @@ $ java -classpath .:/usr/share/java/junit4.jar:src/main/java/:src/test/java/ie/l
 
 ## Comments
 
-1. We can see the attraction of wizards and builders in IDEs - we won't need to
+1. We can see the obvious attraction of wizards and builders in IDEs - we won't need to
    keep track of project directory trees, project root directories, and various
    paths to classes, jarfiles etc.
-2. But we can see exactly what is going on under the bonnet.
+2. But we can see exactly what is going on under the bonnet with these examples.
 3. And we can see the relationship between the SUT and the tests that exercise it.
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
